@@ -9,6 +9,7 @@ class Holoserve::Client
 
   attr_reader :layouts
   attr_reader :bucket
+  attr_reader :history
 
   def initialize(options = { })
     @host, @port = *options.values_at(:host, :port)
@@ -17,6 +18,7 @@ class Holoserve::Client
 
     @layouts = Holoserve::Layouts.new self
     @bucket = Holoserve::Bucket.new self
+    @history = Holoserve::History.new self
   end
 
   def url
