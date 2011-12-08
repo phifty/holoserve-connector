@@ -8,6 +8,7 @@ class Holoserve::Client
   attr_reader :port
 
   attr_reader :layouts
+  attr_reader :bucket
 
   def initialize(options = { })
     @host, @port = *options.values_at(:host, :port)
@@ -15,6 +16,7 @@ class Holoserve::Client
     @port ||= 8080
 
     @layouts = Holoserve::Layouts.new self
+    @bucket = Holoserve::Bucket.new self
   end
 
   def url

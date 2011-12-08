@@ -8,6 +8,12 @@ class Holoserve::Layouts
     @boundary = "xxx12345xxx"
   end
 
+  def clear!
+    Transport::JSON.request :delete,
+                            "#{@client.url}/layouts",
+                            :expected_status_code => 200
+  end
+
   def upload_yml(filename)
     Transport::HTTP.request :post,
                             "#{@client.url}/layouts",

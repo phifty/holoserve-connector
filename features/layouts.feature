@@ -5,7 +5,6 @@ Feature: Layout handling
   As a client application
   It should be possible to set and get the internal layout configuration
 
-  @wip
   Scenario Outline: Set the layouts
      When the <test or invalid> layouts are set
      Then the available layouts should <include or not include> 'one'
@@ -15,7 +14,6 @@ Feature: Layout handling
       | test            | include                |
       | invalid         | not include            |
 
-  @wip
   Scenario Outline: Set the current layout
     Given the test layouts
      When the layout '<layout>' is set to be the current layout

@@ -17,6 +17,6 @@ When /^the (unhandled (post|put|get|delete) request) is performed$/ do |request,
 end
 
 Then /^the (response for (test|unhandled) (post|put|get|delete) request) should be returned$/ do |response, type, method|
-  last_response.status.to_i.should == response[:status]
-  last_response.body.should == response[:body]
+  last_response_status.to_i.should == response[:status]
+  last_response_body.should == response[:body]
 end
