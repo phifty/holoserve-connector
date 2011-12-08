@@ -1,8 +1,8 @@
 GIT
   remote: git@github.com:skrill/holoserve-server.git
-  revision: 3ea4eef9532d153233ec5950380d487e3d90a52c
+  revision: 6b898c45314b8596ef2f8a3c04483094281d2234
   specs:
-    holoserve-server (0.1.1)
+    holoserve-server (0.1.2)
       rack
       sinatra
       unicorn

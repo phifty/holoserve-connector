@@ -8,34 +8,34 @@ Given /^the layout '([^']+)'$/ do |layout|
 end
 
 Given /^a clear layouts setting$/ do
-  delete '/_control/layouts'
+  client.layouts.clear!
 end
 
 When /^the test layouts are set$/ do
   test_layouts_filename = File.expand_path(File.join(File.dirname(__FILE__), "..", "layouts", "test.yml"))
-  post "/_control/layouts", :file => Rack::Test::UploadedFile.new(test_layouts_filename, "application/x-yaml")
+  client.layouts.upload_yml test_layouts_filename
 end
 
 When /^the invalid layouts are set$/ do
   invalid_layouts_filename = File.expand_path(File.join(File.dirname(__FILE__), "..", "layouts", "invalid.yml"))
-  post "/_control/layouts", :file => Rack::Test::UploadedFile.new(invalid_layouts_filename, "application/x-yaml")
+  begin
+    client.layouts.upload_yml invalid_layouts_filename
+  rescue Holoserve::Client::Error
+  end
 end
 
 When /^the layout '([^']+)' is set to be the current layout$/ do |layout|
-  put "/_control/layouts/#{layout}/current"
+  client.layouts.current = layout
 end
 
 Then /^the current layout should be '([^']+)'$/ do |layout|
-  get "/_control/layouts/current"
-  last_response.body.should == layout
+  client.layouts.current.should == layout
 end
 
 Then /^the available layouts should include '([^']+)'$/ do |layout|
-  get "/_control/layouts/ids"
-  last_json_response_body.should include(layout)
+  client.layouts.available.should include(layout)
 end
 
 Then /^the available layouts should not include '([^']+)'$/ do |layout|
-  get "/_control/layouts/ids"
-  last_json_response_body.should_not include(layout)
+  client.layouts.available.should_not include(layout)
 end
