@@ -1,6 +1,6 @@
 require 'transport'
 
-class Holoserve::Layouts
+class Holoserve::Client::Layouts
 
   def initialize(client)
     @client = client

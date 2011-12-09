@@ -2,6 +2,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "holoserve"))
 
 class Holoserve::Client
 
+  autoload :Bucket, File.join(File.dirname(__FILE__), "client", "bucket")
+  autoload :History, File.join(File.dirname(__FILE__), "client", "history")
+  autoload :Layouts, File.join(File.dirname(__FILE__), "client", "layouts")
+
   class Error < StandardError; end
 
   attr_reader :host
@@ -16,9 +20,9 @@ class Holoserve::Client
     @host ||= "localhost"
     @port ||= 8080
 
-    @layouts = Holoserve::Layouts.new self
-    @bucket = Holoserve::Bucket.new self
-    @history = Holoserve::History.new self
+    @layouts = Layouts.new self
+    @bucket = Bucket.new self
+    @history = History.new self
   end
 
   def url
