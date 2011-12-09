@@ -17,7 +17,17 @@ begin
 
   end
 rescue LoadError
+end
 
+begin
+  require 'rspec'
+  require 'rspec/core/rake_task'
+
+  desc "Run specs"
+  RSpec::Core::RakeTask.new do |task|
+    task.pattern = "./spec/lib/**/*_spec.rb"
+  end
+rescue LoadError
 end
 
 namespace :gem do

@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:skrill/holoserve-server.git
-  revision: 4395c0fbc4dd36fcdc0fc890ef7690b2af994c17
+  revision: 65c6500a99f1efcef9edfc8fc02a9ef2ab566590
   specs:
     holoserve-server (0.1.3)
       rack

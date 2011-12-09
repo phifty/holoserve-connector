@@ -1,0 +1,9 @@
+one:
+  -
+    name: "test_request"
+    request:
+      method: "POST"
+      path: "/test"
+    response:
+      status: 201
+      body: "created"
