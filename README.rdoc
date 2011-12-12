@@ -1,2 +1,45 @@
 
-= HoloServe Client - Simple faking of HTTP APIs
+= HoloServe Bond - Bond library for HoloServe.
+
+This library provides a client to the control interface of HoloServe and RSpec matchers to integrate HoloServe in a
+test suite. See {holoserve}[https://github.com/skrill/holoserve] for details about the concept of HoloServe.
+
+== Example
+
+  require 'holoserve/bond'
+  require 'transport'
+
+  holoserve = Holoserve::Bond.new :host => "localhost", :port => 8080
+
+  holoserve.layouts.upload_yml "./layouts/test.yml"
+  holoserve.layouts.current = "one"
+
+  Transport::HTTP.request :post, "/test"     # handled in test layout one
+  Transport::HTTP.request :delete, "/test"   # unhandled
+
+  holoserve.history.pair_names
+  # => [ "test_requested" ]
+
+  holoserve.bucket.requsts
+  # => [ { "method" => "DELETE", :path => "/test", :headers => { ... } } ]
+
+== RSpec inetgration example
+
+  require 'rspec/holoserve'
+
+  RSpec::Holoserve.run_server = true
+
+  describe "RSpec matchers" do
+
+    before :all do
+      @client = Holoserve::Bond.new
+      @client.layouts.upload_yml File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "layouts", "test.yml"))
+      @client.layouts.current = "one"
+    end
+
+    it "should test if holoserve received a specified request" do
+      Transport::HTTP.request :post, "http://localhost:8080/test", :expected_status_code => 201
+      @client.should have_received("test_request")
+    end
+
+  end

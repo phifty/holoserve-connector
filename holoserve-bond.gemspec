@@ -10,7 +10,7 @@ Gem::Specification.new do |specification|
   specification.homepage          = "http://github.com/skrill/holoserve-bond"
   specification.rubyforge_project = "holoserve-bond"
 
-  specification.summary           = "Bond library for holoserve."
+  specification.summary           = "Bond library for HoloServe."
   specification.description       = "Provides a client for the control interface of holoserve and some RSpec matchers."
 
   specification.has_rdoc          = true
