@@ -1,8 +1,8 @@
 GIT
-  remote: git@github.com:skrill/holoserve-server.git
-  revision: 65c6500a99f1efcef9edfc8fc02a9ef2ab566590
+  remote: git@github.com:skrill/holoserve.git
+  revision: 15d141cc618854d3c86c72e65003099f98008103
   specs:
-    holoserve-server (0.1.3)
+    holoserve (0.1.0)
       rack
       sinatra
       unicorn
@@ -52,7 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber
-  holoserve-server!
+  holoserve!
   rake
   rspec
   transport

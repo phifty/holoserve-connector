@@ -5,7 +5,7 @@ require 'cucumber/formatter/unicode'
 require 'rspec/expectations'
 require 'transport'
 
-require 'holoserve/server'
+require 'holoserve'
 
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "holoserve", "bond"))
 
@@ -18,7 +18,7 @@ class TestWorld
   attr_reader :last_response_body
 
   def initialize
-    @server = Holoserve::Server::Runner.new
+    @server = Holoserve::Runner.new
     @client = Holoserve::Bond.new
   end
 
