@@ -6,7 +6,7 @@ RSpec::Holoserve.run_server = true
 describe "RSpec matchers" do
 
   before :all do
-    @client = Holoserve::Client.new
+    @client = Holoserve::Bond.new
     @client.layouts.upload_yml File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "layouts", "test.yml"))
     @client.layouts.current = "one"
   end

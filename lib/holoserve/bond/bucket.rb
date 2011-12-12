@@ -1,5 +1,5 @@
 
-class Holoserve::Client::Bucket
+class Holoserve::Bond::Bucket
 
   def initialize(client)
     @client = client

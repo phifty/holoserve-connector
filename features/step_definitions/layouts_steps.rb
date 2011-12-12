@@ -20,7 +20,7 @@ When /^the invalid layouts are set$/ do
   invalid_layouts_filename = File.expand_path(File.join(File.dirname(__FILE__), "..", "layouts", "invalid.yml"))
   begin
     client.layouts.upload_yml invalid_layouts_filename
-  rescue Holoserve::Client::Error
+  rescue Holoserve::Bond::Error
   end
 end
 

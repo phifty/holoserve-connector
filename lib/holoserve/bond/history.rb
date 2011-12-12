@@ -1,5 +1,5 @@
 
-class Holoserve::Client::History
+class Holoserve::Bond::History
 
   def initialize(client)
     @client = client

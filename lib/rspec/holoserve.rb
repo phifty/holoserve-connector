@@ -17,7 +17,7 @@ end
 
 RSpec::Matchers.define :have_received do |expected|
   match do |actual|
-    actual.is_a?(Holoserve::Client) && actual.history.pair_names.include?(expected)
+    actual.is_a?(Holoserve::Bond) && actual.history.pair_names.include?(expected)
   end
 end
 

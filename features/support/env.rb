@@ -7,7 +7,7 @@ require 'transport'
 
 require 'holoserve/server'
 
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "holoserve", "client"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "holoserve", "bond"))
 
 class TestWorld
 
@@ -19,7 +19,7 @@ class TestWorld
 
   def initialize
     @server = Holoserve::Server::Runner.new
-    @client = Holoserve::Client.new
+    @client = Holoserve::Bond.new
   end
 
   def perform(request)

@@ -1,6 +1,6 @@
 require 'transport'
 
-class Holoserve::Client::Layouts
+class Holoserve::Bond::Layouts
 
   def initialize(client)
     @client = client
@@ -24,7 +24,7 @@ class Holoserve::Client::Layouts
                             :expected_status_code => 200
     true
   rescue Transport::UnexpectedStatusCodeError => error
-    raise Holoserve::Client::Error, error.message
+    raise Holoserve::Bond::Error, error.message
   end
 
   def available

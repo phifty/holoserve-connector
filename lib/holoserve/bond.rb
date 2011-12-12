@@ -1,10 +1,10 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "holoserve"))
 
-class Holoserve::Client
+class Holoserve::Bond
 
-  autoload :Bucket, File.join(File.dirname(__FILE__), "client", "bucket")
-  autoload :History, File.join(File.dirname(__FILE__), "client", "history")
-  autoload :Layouts, File.join(File.dirname(__FILE__), "client", "layouts")
+  autoload :Bucket, File.join(File.dirname(__FILE__), "bond", "bucket")
+  autoload :History, File.join(File.dirname(__FILE__), "bond", "history")
+  autoload :Layouts, File.join(File.dirname(__FILE__), "bond", "layouts")
 
   class Error < StandardError; end
 
