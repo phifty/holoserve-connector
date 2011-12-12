@@ -1,10 +1,12 @@
+require 'rspec'
 require 'rspec/expectations'
+require 'holoserve'
 
 RSpec.configure do |configuration|
 
   configuration.before :suite do
     if RSpec::Holoserve.run_server?
-      @server = Holoserve::Server::Runner.new
+      @server = ::Holoserve::Runner.new
       @server.start
     end
   end
