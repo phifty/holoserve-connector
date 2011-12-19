@@ -1,9 +1,9 @@
 
-class Holoserve::Bond
+class Holoserve::Connector
 
-  autoload :Bucket, File.join(File.dirname(__FILE__), "bond", "bucket")
-  autoload :History, File.join(File.dirname(__FILE__), "bond", "history")
-  autoload :Layouts, File.join(File.dirname(__FILE__), "bond", "layouts")
+  autoload :Bucket, File.join(File.dirname(__FILE__), "connector", "bucket")
+  autoload :History, File.join(File.dirname(__FILE__), "connector", "history")
+  autoload :Layouts, File.join(File.dirname(__FILE__), "connector", "layouts")
 
   class Error < StandardError; end
 

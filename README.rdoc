@@ -1,15 +1,15 @@
 
-= HoloServe Bond - Bond library for HoloServe.
+= HoloServe Connector - Connector library for HoloServe.
 
 This library provides a client to the control interface of HoloServe and RSpec matchers to integrate HoloServe in a
 test suite. See {holoserve}[https://github.com/skrill/holoserve] for details about the concept of HoloServe.
 
 == Example
 
-  require 'holoserve/bond'
+  require 'holoserve/connector'
   require 'transport'
 
-  holoserve = Holoserve::Bond.new :host => "localhost", :port => 8080
+  holoserve = Holoserve::Connector.new :host => "localhost", :port => 8080
 
   holoserve.layouts.upload_yml "./layouts/test.yml"
   holoserve.layouts.current = "one"
