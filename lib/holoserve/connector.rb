@@ -17,7 +17,7 @@ class Holoserve::Connector
   def initialize(options = { })
     @host, @port = *options.values_at(:host, :port)
     @host ||= "localhost"
-    @port ||= 8080
+    @port ||= 4250
 
     @layouts = Layouts.new self
     @bucket = Bucket.new self
