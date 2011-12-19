@@ -14,7 +14,7 @@ Gem::Specification.new do |specification|
   specification.description       = "Provides a client for the control interface of holoserve and some RSpec matchers."
 
   specification.has_rdoc          = true
-  specification.files             = [ "README.rdoc", "Rakefile" ] + Dir["bin/**/*"] + Dir["lib/**/*"] + Dir["spec/**/*"]
+  specification.files             = [ "README.rdoc", "LICENSE", "Rakefile" ] + Dir["bin/**/*"] + Dir["lib/**/*"] + Dir["spec/**/*"]
   specification.extra_rdoc_files  = [ "README.rdoc" ]
   specification.require_path      = "lib"
 
