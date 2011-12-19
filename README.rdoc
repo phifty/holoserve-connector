@@ -1,8 +1,8 @@
 
-= HoloServe Connector - Connector library for HoloServe.
+= Holoserve Connector - Connector library for Holoserve.
 
-This library provides a client to the control interface of HoloServe and RSpec matchers to integrate HoloServe in a
-test suite. See {holoserve}[https://github.com/skrill/holoserve] for details about the concept of HoloServe.
+This library provides a client to the control interface of Holoserve and RSpec matchers to integrate Holoserve in a
+test suite. See {holoserve}[https://github.com/skrill/holoserve] for details about the concept of Holoserve.
 
 == Example
 
