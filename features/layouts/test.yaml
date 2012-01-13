@@ -1,0 +1,76 @@
+-
+  request:
+    method: "POST"
+    path: "/test"
+    parameters:
+      test: "value"
+  response:
+    one:
+      status: 201
+      body: "created"
+-
+  request:
+    method: "PUT"
+    path: "/test"
+    parameters:
+      test: "value"
+  response:
+    one:
+      status: 200
+      body: "updated"
+-
+  request:
+    method: "GET"
+    path: "/test"
+    parameters:
+      test: "value"
+  response:
+    one:
+      status: 200
+      body: "fetched"
+-
+  request:
+    method: "DELETE"
+    path: "/test"
+    parameters:
+      test: "value"
+  response:
+    one:
+      status: 200
+      body: "deleted"
+-
+  request:
+    method: "POST"
+    path: "/test"
+  response:
+    one:
+      status: 201
+      body: "created"
+-
+  request:
+    method: "PUT"
+    path: "/test"
+  response:
+    one:
+      status: 200
+      body: "updated"
+-
+  name: "fetched_test"
+  request:
+    method: "GET"
+    path: "/test"
+  response:
+    one:
+      status: 200
+      body: "fetched"
+    two:
+      status: 200
+      body: "fetched"
+-
+  request:
+    method: "DELETE"
+    path: "/test"
+  response:
+    one:
+      status: 200
+      body: "deleted"

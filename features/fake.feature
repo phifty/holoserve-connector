@@ -6,8 +6,8 @@ Feature: Fake handling of requests
   It should handle all http requests
 
   Scenario Outline: Handle request
-    Given the test layouts
-      And the layout 'one'
+    Given the test layout
+      And the situation 'one'
      When the test <method> request is performed
      Then the response for test <method> request should be returned
     Examples:
@@ -18,8 +18,8 @@ Feature: Fake handling of requests
       | delete |
 
   Scenario Outline: Handle request with parameters
-    Given the test layouts
-      And the layout 'one'
+    Given the test layout
+      And the situation 'one'
      When the test <method> request is performed with parameter set '<parameter set>'
      Then the response for test <method> request should be returned
     Examples:

@@ -1,6 +1,6 @@
 require 'transport'
 
-class Holoserve::Connector::Layouts
+class Holoserve::Connector::Layout
 
   def initialize(client)
     @client = client
@@ -10,14 +10,14 @@ class Holoserve::Connector::Layouts
 
   def clear!
     Transport::JSON.request :delete,
-                            "#{@client.url}/layouts",
+                            "#{@client.url}/layout",
                             :expected_status_code => 200
   end
 
-  def upload_yml(filename)
+  def upload_yaml(filename)
     Transport::HTTP.request :post,
-                            "#{@client.url}/layouts",
-                            :body => upload_yml_file_request_body(filename),
+                            "#{@client.url}/layout.yaml",
+                            :body => upload_yaml_file_request_body(filename),
                             :headers => {
                               "Content-Type" => "multipart/form-data, boundary=#{@boundary}"
                             },
@@ -27,21 +27,26 @@ class Holoserve::Connector::Layouts
     raise Holoserve::Connector::Error, error.message
   end
 
-  def available
-    Transport::JSON.request :get, "#{@client.url}/layouts/ids"
+  def download_yaml
+    response = Transport::HTTP.request :get,
+                                       "#{@client.url}/layout.yaml",
+                                       :expected_status_code => 200
+    YAML.load response
+  rescue Transport::UnexpectedStatusCodeError => error
+    raise Holoserve::Connector::Error, error.message
   end
 
-  def current=(id)
-    Transport::JSON.request :put, "#{@client.url}/layouts/#{id}/current"
+  def situation=(value)
+    Transport::JSON.request :put, "#{@client.url}/situation/#{value}"
   end
 
-  def current
-    Transport::HTTP.request :get, "#{@client.url}/layouts/current"
+  def situation
+    Transport::HTTP.request :get, "#{@client.url}/situation"
   end
 
   private
 
-  def upload_yml_file_request_body(filename)
+  def upload_yaml_file_request_body(filename)
     "--#{@boundary}\r\n" +
       "Content-Disposition: form-data; name=\"file\"; filename=\"#{File.basename(filename)}\"\r\n" +
       "Content-Type: application/x-yaml\r\n" +
