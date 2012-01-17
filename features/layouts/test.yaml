@@ -4,7 +4,7 @@
     path: "/test"
     parameters:
       test: "value"
-  response:
+  responses:
     one:
       status: 201
       body: "created"
@@ -14,7 +14,7 @@
     path: "/test"
     parameters:
       test: "value"
-  response:
+  responses:
     one:
       status: 200
       body: "updated"
@@ -24,7 +24,7 @@
     path: "/test"
     parameters:
       test: "value"
-  response:
+  responses:
     one:
       status: 200
       body: "fetched"
@@ -34,7 +34,7 @@
     path: "/test"
     parameters:
       test: "value"
-  response:
+  responses:
     one:
       status: 200
       body: "deleted"
@@ -42,7 +42,7 @@
   request:
     method: "POST"
     path: "/test"
-  response:
+  responses:
     one:
       status: 201
       body: "created"
@@ -50,7 +50,7 @@
   request:
     method: "PUT"
     path: "/test"
-  response:
+  responses:
     one:
       status: 200
       body: "updated"
@@ -59,7 +59,7 @@
   request:
     method: "GET"
     path: "/test"
-  response:
+  responses:
     one:
       status: 200
       body: "fetched"
@@ -70,7 +70,7 @@
   request:
     method: "DELETE"
     path: "/test"
-  response:
+  responses:
     one:
       status: 200
       body: "deleted"
