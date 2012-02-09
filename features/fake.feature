@@ -1,30 +1,39 @@
 
 Feature: Fake handling of requests
 
-  In order to replace a web API
+  In order to replace a web api
   As a client application
   It should handle all http requests
 
-  Scenario Outline: Handle request
-    Given the test layout
-      And the situation 'one'
-     When the test <method> request is performed
-     Then the response for test <method> request should be returned
-    Examples:
-      | method |
-      | post   |
-      | put    |
-      | get    |
-      | delete |
+  Background:
+    Given the test pairs
 
-  Scenario Outline: Handle request with parameters
-    Given the test layout
-      And the situation 'one'
-     When the test <method> request is performed with parameter set '<parameter set>'
-     Then the response for test <method> request should be returned
-    Examples:
-      | method | parameter set |
-      | post   | one           |
-      | put    | one           |
-      | get    | one           |
-      | delete | one           |
+  Scenario: Handle a request
+    Given the situation 'one'
+     When the test request is performed
+     Then the test response should be returned
+
+  Scenario: Handle a request with parameters
+    Given the situation 'one'
+     When the test request is performed with the test parameters
+     Then the test parameters response should be returned
+
+  Scenario: Handle a request with headers
+    Given the situation 'one'
+     When the test request is performed with the test headers
+     Then the test headers response should be returned
+
+  Scenario: Handle a request that respond json
+    Given the situation 'one'
+     When the test json request is performed
+     Then the test json response should be returned
+
+  Scenario: Handle a request with oauth headers
+    Given the situation 'one'
+     When the test request is performed with the test oauth headers
+     Then the test oauth response should be returned
+
+  Scenario: Handle request without a situation set
+    Given no situation
+     When the test request is performed
+     Then the test response default should be returned

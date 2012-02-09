@@ -1,0 +1,11 @@
+request:
+  imports:
+    -
+      path: "test_fixture.test_model"
+      as: "parameters"
+  method: "GET"
+  path: "/test-parameters"
+responses:
+  default:
+    status: 200
+    body: "test_parameters"

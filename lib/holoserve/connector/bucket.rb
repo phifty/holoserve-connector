@@ -6,7 +6,11 @@ class Holoserve::Connector::Bucket
   end
 
   def requests
-    Transport::JSON.request :get, "#{@client.url}/bucket/requests"
+    Transport::JSON.request :get, "#{@client.url}/bucket"
+  end
+
+  def clear!
+    Transport::JSON.request :delete, "#{@client.url}/bucket"
   end
 
 end

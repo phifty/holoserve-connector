@@ -1,21 +1,30 @@
 
-Transform /^response for test (post|put|get|delete) request$/ do |method|
-  case method.to_sym
-    when :post
-      { :status => 201, :body => "created" }
-    when :put
-      { :status => 200, :body => "updated" }
-    when :get
-      { :status => 200, :body => "fetched" }
-    when :delete
-      { :status => 200, :body => "deleted" }
-  end
+Then /^the test response should be returned/ do
+  last_response_status.should == 200
+  last_response_body.should == "test_request"
 end
 
-Transform /^response for unhandled (post|put|get|delete) request$/ do |method|
-  { :status => 404, :body => "no response found for this request" }
+Then /^the test parameters response should be returned/ do
+  last_response_status.should == 200
+  last_response_body.should == "test_parameters"
 end
 
-Then /^the responded status code should be (\d+)$/ do |status_code|
-  last_response.status.to_i.should == status_code.to_i
+Then /^the test headers response should be returned/ do
+  last_response_status.should == 200
+  last_response_body.should == "test_headers"
+end
+
+Then /^the test json response should be returned/ do
+  last_response_status.should == 200
+  last_json_response_body.should == { "test" => "value" }
+end
+
+Then /^the test oauth response should be returned/ do
+  last_response_status.should == 200
+  last_response_body.should == "test_oauth"
+end
+
+Then /^the test response default should be returned/ do
+  last_response_status.should == 200
+  last_response_body.should == ""
 end

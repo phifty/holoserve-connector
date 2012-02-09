@@ -6,17 +6,14 @@ Feature: History handling
   It should list the names of the triggered request/response-pairs
 
   Background:
-    Given the test layout
+    Given the test pairs
 
-  Scenario: A named pair is triggered
-    Given the situation 'two'
-     When the test get request is performed
-     Then the response for test get request should be returned
-      And the history should contain the test get pair name
+  Scenario: A pair is triggered
+    Given no history
+     When the test request is performed
+     Then the history should contain the test pair name
 
-  Scenario: A pair without a name is triggered
-    Given the situation 'one'
-      And a clear history
-     When the test post request is performed
-     Then the response for test post request should be returned
-      And the history should be empty
+  Scenario: The history is cleared
+    Given a history containing only the test pair name
+     When the history is cleared
+     Then the history should be empty
