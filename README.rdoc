@@ -9,7 +9,7 @@ test suite. See {holoserve}[https://github.com/skrill/holoserve] for details abo
   require 'holoserve/connector'
   require 'transport'
 
-  holoserve = Holoserve::Connector.new :host => "localhost", :port => 8080
+  holoserve = Holoserve::Connector.new :host => "localhost"
 
   holoserve.fixtures.upload "./fixtures/*.json"
   holoserve.pairs.upload "./pairs/*.yaml"
@@ -39,7 +39,7 @@ test suite. See {holoserve}[https://github.com/skrill/holoserve] for details abo
     end
 
     it "should test if holoserve received a specified request" do
-      Transport::HTTP.request :post, "http://localhost:8080/test", :expected_status_code => 201
+      Transport::HTTP.request :post, "http://localhost:4250/test", :expected_status_code => 201
       @client.should have_received("test_request")
     end
 
