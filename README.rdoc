@@ -11,13 +11,14 @@ test suite. See {holoserve}[https://github.com/skrill/holoserve] for details abo
 
   holoserve = Holoserve::Connector.new :host => "localhost", :port => 8080
 
-  holoserve.layouts.upload_yml "./layouts/test.yml"
-  holoserve.layouts.current = "one"
+  holoserve.fixtures.upload "./fixtures/*.json"
+  holoserve.pairs.upload "./pairs/*.yaml"
+  holoserve.situation.name = "one"
 
   Transport::HTTP.request :post, "/test"     # handled in test layout one
   Transport::HTTP.request :delete, "/test"   # unhandled
 
-  holoserve.history.pair_names
+  holoserve.history.pair_ids
   # => [ "test_requested" ]
 
   holoserve.bucket.requsts
@@ -32,9 +33,9 @@ test suite. See {holoserve}[https://github.com/skrill/holoserve] for details abo
   describe "RSpec matchers" do
 
     before :all do
-      @client = Holoserve::Bond.new
-      @client.layouts.upload_yml File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "layouts", "test.yml"))
-      @client.layouts.current = "one"
+      @client = Holoserve::Connector.new
+      @client.pairs.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "pairs", "test.yaml"))
+      @client.situation.name = "one"
     end
 
     it "should test if holoserve received a specified request" do
