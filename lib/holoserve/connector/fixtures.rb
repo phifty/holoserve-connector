@@ -33,10 +33,9 @@ class Holoserve::Connector::Fixtures
                                                        "#{@client.url}/fixtures",
                                                        :expected_status_code => 200
     uploader.upload
-    true
   rescue Transport::UnexpectedStatusCodeError => error
-    raise Holoserve::Connector::Error, error.message unless error.status_code == 400
-    false
+    raise Holoserve::Connector::Error, "the file #{filename} has an invalid format" if error.status_code == 400
+    raise Holoserve::Connector::Error, error.message
   end
 
 end

@@ -8,7 +8,11 @@ Given /^the test pairs$/ do
 end
 
 When /^the (yaml|json|invalid) pairs are added$/ do |format|
-  client.pairs.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "pairs", "test_*.#{format}"))
+  begin
+    client.pairs.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "pairs", "test_*.#{format}"))
+  rescue Holoserve::Connector::Error => error
+    raise error unless format == "invalid"
+  end
 end
 
 Then /^the test pair should be present$/ do
