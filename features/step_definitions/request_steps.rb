@@ -1,20 +1,24 @@
 
 When /^the test request is performed$/ do
-  perform :method => "GET", :path => "/test-request"
+  get "/test-request"
 end
 
 When /^the test request is performed with the test parameters$/ do
-  perform :method => "GET", :path => "/test-parameters", :parameters => { :test => "value" }
+  get "/test-parameters", :test => "value"
 end
 
 When /^the test request is performed with the test headers$/ do
-  perform :method => "GET", :path => "/test-headers", :headers => { "test" => "value" }
+  get "/test-headers", { }, "test" => "value"
 end
 
 When /^the test json request is performed$/ do
-  perform :method => "GET", :path => "/test-json"
+  get "/test-json"
 end
 
 When /^the test request is performed with the test oauth headers$/ do
-  perform :method => "GET", :path => "/test-oauth", :headers => { "authorization" => "OAuth test=\"value\"" }
+  get "/test-oauth", { }, "authorization" => "OAuth test=\"value\""
+end
+
+When /^the test unhandled request is performed$/ do
+  get "/test-unhandled"
 end

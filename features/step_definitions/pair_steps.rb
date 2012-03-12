@@ -1,24 +1,55 @@
 
-Given /^no pairs$/ do
-  client.pairs.clear!
+When /^the list of pairs is fetched$/ do
+  @pairs = client.pairs.ids
 end
 
-Given /^the test pairs$/ do
-  step "the yaml pairs are added"
+When /^the pair of the test request is fetched$/ do
+  @pair = client.pairs.download "test_request"
 end
 
-When /^the (yaml|json|invalid) pairs are added$/ do |format|
-  begin
-    client.pairs.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "pairs", "test_*.#{format}"))
-  rescue Holoserve::Connector::Error => error
-    raise error unless format == "invalid"
-  end
+When /^the pair of the test evaluation request is fetched$/ do
+  @pair = client.pairs.download "test_evaluation"
 end
 
-Then /^the test pair should be present$/ do
-  client.pairs.download("test_request").should_not be_nil
+Then /^the returned list should contain the pair of the test request$/ do
+  @pairs.keys.should include("test_request")
 end
 
-Then /^the test pair should be absent$/ do
-  client.pairs.download("test_request").should be_nil
+Then /^the returned pair should contain the test request$/ do
+  @pair.should == {
+    "request" => {
+      "method" => "GET",
+      "path" => "/test-request"
+    },
+    "responses" => {
+      "default" => {
+        "status" => 200
+      },
+      "test == :value" => {
+        "body" => "test_request",
+        "transitions" => {
+          "test" => "another value"
+        }
+      }
+    }
+  }
+end
+
+Then /^the returned pair should contain the test evaluation request$/ do
+  @pair.should == {
+    "request" => {
+      "method" => "GET",
+      "path" => "/test-evaluation",
+      "parameters" => {
+        "test" => "value",
+        "another" => "value"
+      }
+    },
+    "responses" => {
+      "default" => {
+        "status" => 200,
+        "body" => "test_evaluation"
+      }
+    }
+  }
 end

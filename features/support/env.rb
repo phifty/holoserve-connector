@@ -11,15 +11,41 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "h
 
 class TestWorld
 
-  attr_reader :server
   attr_reader :client
 
   attr_reader :last_response_status
   attr_reader :last_response_body
 
   def initialize
-    @server = Holoserve::Runner.new
     @client = Holoserve::Connector.new
+  end
+
+  def post(path, parameters = { }, headers = { })
+    perform :method => "POST",
+            :path => path,
+            :parameters => parameters,
+            :headers => headers
+  end
+
+  def get(path, parameters = { }, headers = { })
+    perform :method => "GET",
+            :path => path,
+            :parameters => parameters,
+            :headers => headers
+  end
+
+  def put(path, parameters = { }, headers = { })
+    perform :method => "PUT",
+            :path => path,
+            :parameters => parameters,
+            :headers => headers
+  end
+
+  def delete(path, parameters = { }, headers = { })
+    perform :method => "DELETE",
+            :path => path,
+            :parameters => parameters,
+            :headers => headers
   end
 
   def perform(request)
@@ -41,13 +67,4 @@ class TestWorld
 end
 
 test_world = TestWorld.new
-test_world.server.start
-
-test_world.client.fixtures.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "fixtures", "test_*.yaml"))
-test_world.client.pairs.upload File.expand_path(File.join(File.dirname(__FILE__), "..", "pairs", "test_*.yaml"))
-
 World { test_world }
-
-at_exit {
-  test_world.server.stop
-}
