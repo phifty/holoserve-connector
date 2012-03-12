@@ -1,3 +1,4 @@
+require 'transport'
 
 class Holoserve::Connector::Pairs
 
