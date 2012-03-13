@@ -11,9 +11,7 @@ test suite. See {holoserve}[https://github.com/skrill/holoserve] for details abo
 
   holoserve = Holoserve::Connector.new :host => "localhost"
 
-  holoserve.fixtures.upload "./fixtures/*.json"
-  holoserve.pairs.upload "./pairs/*.yaml"
-  holoserve.situation.name = "one"
+  holoserve.state.set :name => "one"
 
   Transport::HTTP.request :post, "/test"     # handled in test layout one
   Transport::HTTP.request :delete, "/test"   # unhandled
