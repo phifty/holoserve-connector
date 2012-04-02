@@ -19,7 +19,7 @@ end
 
 RSpec::Matchers.define :have_received do |expected|
   match do |actual|
-    actual.is_a?(Holoserve::Connector) && actual.history.pair_names.include?(expected)
+    actual.is_a?(Holoserve::Connector) && actual.history.pair_ids.include?(expected)
   end
 end
 
