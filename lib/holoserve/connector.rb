@@ -33,4 +33,8 @@ class Holoserve::Connector
     "http://#{@host}:#{@port}/_control"
   end
 
+  def inspect
+    "<#{self.class} at #{@host}:#{@port}>"
+  end
+
 end
