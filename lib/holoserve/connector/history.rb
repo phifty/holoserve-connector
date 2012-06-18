@@ -10,7 +10,7 @@ class Holoserve::Connector::History
     Transport::JSON.request :delete, "#{@client.url}/history"
   end
 
-  def pair_ids
+  def entries
     Transport::JSON.request :get, "#{@client.url}/history"
   end
 

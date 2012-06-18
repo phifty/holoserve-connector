@@ -1,6 +1,7 @@
-request:
-  method: "GET"
-  path: "/test-json"
+requests:
+  default:
+    method: "GET"
+    path: "/test-json"
 responses:
   default:
     status: 200

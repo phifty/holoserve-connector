@@ -17,9 +17,17 @@ RSpec.configure do |configuration|
 
 end
 
-RSpec::Matchers.define :have_received do |expected|
+RSpec::Matchers.define :have_received do |pair_id, request_variant = nil, response_variant = nil|
   match do |actual|
-    actual.is_a?(Holoserve::Connector) && actual.history.pair_ids.include?(expected)
+    if actual.is_a?(Holoserve::Connector)
+      actual.history.entries.detect do |entry|
+        entry["id"] == pair_id &&
+          (request_variant.nil? || entry["request_variant"] == request_variant) &&
+          (response_variant.nil? || entry["response_variants"] && entry["response_variants"].include?(response_variant))
+      end
+    else
+      false
+    end
   end
 end
 

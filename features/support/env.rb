@@ -7,7 +7,8 @@ require 'transport'
 
 require 'holoserve'
 
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "holoserve", "connector"))
+require File.expand_path("../../lib/holoserve/connector", File.dirname(__FILE__))
+require File.expand_path("../../lib/rspec/holoserve", File.dirname(__FILE__))
 
 class TestWorld
 

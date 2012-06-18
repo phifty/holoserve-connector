@@ -17,15 +17,18 @@ end
 
 Then /^the returned pair should contain the test request$/ do
   @pair.should == {
-    "request" => {
-      "method" => "GET",
-      "path" => "/test-request"
+    "requests" => {
+      "default" => {
+        "method" => "GET",
+        "path" => "/test-request"
+      }
     },
     "responses" => {
       "default" => {
         "status" => 200
       },
-      "test == :value" => {
+      "test" => {
+        "condition" => "test == :value",
         "body" => "test_request",
         "transitions" => {
           "test" => "another value"
@@ -37,12 +40,14 @@ end
 
 Then /^the returned pair should contain the test evaluation request$/ do
   @pair.should == {
-    "request" => {
-      "method" => "GET",
-      "path" => "/test-evaluation",
-      "parameters" => {
-        "test" => "value",
-        "another" => "value"
+    "requests" => {
+      "default" => {
+        "method" => "GET",
+        "path" => "/test-evaluation",
+        "parameters" => {
+          "test" => "value",
+          "another" => "value"
+        }
       }
     },
     "responses" => {

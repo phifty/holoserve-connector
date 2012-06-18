@@ -13,9 +13,16 @@ When /^the history is cleared$/ do
 end
 
 Then /^the history should be empty$/ do
-  client.history.pair_ids.should be_empty
+  client.history.entries.should be_empty
 end
 
 Then /^the history should contain the test pair name$/ do
-  client.history.pair_ids.should include("test_request")
+  client.history.entries.should include(
+                                  "id" => "test_request",
+                                  "request_variant" => "default",
+                                  "response_variants" => %w{default test})
+
+  client.should have_received("test_request")
+  client.should have_received("test_request", "default")
+  client.should have_received("test_request", "default", "test")
 end
