@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/skrill/holoserve.git
-  revision: e2c1231555037404802bd199a7f28d44e6252893
+  revision: 67a166965411db31958bf728f45b4118dbc73a80
   branch: master
   specs:
     holoserve (0.4.1)
@@ -27,9 +27,9 @@ GEM
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.6)
     diff-lcs (1.1.3)
-    em-synchrony (1.0.1)
+    em-synchrony (1.0.2)
       eventmachine (>= 1.0.0.beta.1)
-    eventmachine (1.0.0.beta.4)
+    eventmachine (1.0.0.rc.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     gherkin (2.6.8)

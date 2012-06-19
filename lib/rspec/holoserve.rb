@@ -23,7 +23,7 @@ RSpec::Matchers.define :have_received do |pair_id, request_variant = nil, respon
       actual.history.entries.detect do |entry|
         entry["id"] == pair_id &&
           (request_variant.nil? || entry["request_variant"] == request_variant) &&
-          (response_variant.nil? || entry["response_variants"] && entry["response_variants"].include?(response_variant))
+          (response_variant.nil? || entry["response_variant"] == response_variant)
       end
     else
       false
