@@ -8,7 +8,7 @@ group :development do
 end
 
 group :test do
-  gem "holoserve", :github => "skrill/holoserve", :branch => :master
+  gem "holoserve"
   gem "cucumber"
   gem "rspec"
 end
