@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |specification|
   specification.name              = "holoserve-connector"
-  specification.version           = "0.3.2"
-  specification.date              = "2012-06-22"
+  specification.version           = "0.3.3"
+  specification.date              = "2013-02-27"
 
   specification.authors           = [ "Philipp Brüll", "Maximilian Hoffmann" ]
-  specification.email             = "philipp.bruell@skrill.com"
-  specification.homepage          = "http://github.com/skrill/holoserve-connector"
+  specification.email             = "b.phifty@gmail.com"
+  specification.homepage          = "http://github.com/phifty/holoserve-connector"
   specification.rubyforge_project = "holoserve-connector"
 
   specification.summary           = "Connector library for HoloServe."
