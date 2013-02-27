@@ -26,5 +26,5 @@ Then /^the state should be undefined$/ do
 end
 
 Then /^the state should have been updated$/ do
-  client.state.get.should == { "test" => "another value" }
+  client.state.get.should == { "test" => "another value", "id" => "test_evaluation" }
 end
